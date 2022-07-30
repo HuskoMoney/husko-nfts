@@ -5,7 +5,7 @@ const Home = () => {
         <span className="w-full flex flex-row items-center justify-center spcae-x-12">
           {/* Left */}
           <span className="w-full flex flex-col space-y-6">
-            <h1 className="text-white font-bold text-7xl capitalize">
+            <h1 className="text-white text-7xl capitalize">
               HSKO donates <br />{" "}
               <span className="text-red-600">0.5% of every transaction</span>{" "}
               <br /> to charity.
@@ -62,7 +62,7 @@ const Button = ({ style, text, action, type }) => {
       onClick={action}
       type={type}
     >
-      {text && <span>{text}</span>}
+      {text && <p>{text}</p>}
     </button>
   );
 };
