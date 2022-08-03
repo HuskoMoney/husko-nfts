@@ -1,11 +1,24 @@
-import React from "react";
+import React, { useRef } from "react";
 
 export default function Header() {
+  const menuRef = useRef(null);
+
+  const toggleMenu = _ => {
+    if (menuRef.current.classList.contains("hidden")) {
+      menuRef.current.classList.remove("hidden");
+    } else {
+      menuRef.current.classList.add("hidden");
+    }
+  };
+
   return (
     <header className="bg-slate-500">
-      <nav className="header__nav  flex justify-center sm:justify-start">
-        {/* <div className="header__nav--mobile h-8">
-          <span className="menu_text">Menu</span>
+      <nav className="header__nav  flex justify-end sm:justify-center">
+        <div
+          onClick={toggleMenu}
+          className="header__nav--mobile flex items-center sm:hidden mr-6 h-8"
+        >
+          <h1 className="menu_text mr-2">Menu</h1>
           <svg
             class="w-6 h-6"
             fill="none"
@@ -20,10 +33,13 @@ export default function Header() {
               d="M4 6h16M4 12h16M4 18h16"
             ></path>
           </svg>
-        </div> */}
-        <ul className="flex font-bold text-white ">
+        </div>
+        <ul
+          ref={menuRef}
+          className="hidden sm:flex pr-6 sm:pr-0 space-y-3 sm:space-y-0 sm:space-x-10 font-bold text-white "
+        >
           <li>
-            <a className="active" href="http://#">
+            <a className="text-red-500" href="http://#">
               {" "}
               Home
             </a>

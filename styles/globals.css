@@ -48,7 +48,7 @@ p {
   background-color: #213d5a;
   padding: 2rem 0;
 }
-.header__nav li {
+/* .header__nav li {
   margin: 0 2rem;
 }
 
@@ -60,7 +60,7 @@ p {
   .header__nav li {
     margin: 0 1rem;
   }
-}
+} */
 
 @media (max-width: 640px) {
     /* .header__nav {
