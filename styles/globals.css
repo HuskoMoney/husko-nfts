@@ -1,6 +1,15 @@
 /* Fonts */
 @import url("https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@300&display=swap");
 
+/* @tailwind base;
+@tailwind components;
+@tailwind utilities; */
+/* @import './base.css'; */ 
+
+@import 'tailwindcss/base';
+@import 'tailwindcss/components';
+@import 'tailwindcss/utilities';
+
 @font-face {
   font-family: "Furore";
   src: url("/font/Furore.otf") format("opentype");
@@ -66,6 +75,6 @@ svg {
     height: 2rem
 }
 
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+footer {
+    background-color: #152030;
+}

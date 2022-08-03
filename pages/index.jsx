@@ -49,6 +49,7 @@
 //   );
 // };
 
+import Footer from "../Layout/Footer";
 import Header from "../Layout/Header";
 
 const Button = ({ style, text, action, type }) => {
@@ -120,6 +121,7 @@ const Home = _ => {
           </div>
         </div>
       </div>
+      <Footer/>
     </div>
   );
 };
