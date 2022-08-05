@@ -1,56 +1,12 @@
-// const HomeBefore = () => {
-//   return (
-//     <div className="bg-hero w-screen h-full xl:h-screen ">
-//       <div className="w-full h-full px-24 container mx-auto flex flex-col items-center justify-center">
-//         <span className="w-full flex flex-row items-center justify-center spcae-x-12">
-//           {/* Left */}
-//           <span className="w-full flex flex-col space-y-6">
-//             <h1 className="text-white text-7xl capitalize">
-//               HSKO donates <br />{" "}
-//               <span className="text-red-600">0.5% of every transaction</span>{" "}
-//               <br /> to charity.
-//             </h1>
-//             <span className="w-full max-w-xl">
-//               <p className="text-white font-bold">
-//                 HSKO is a p2p community-driven, cryptocurrency on the Polygon
-//                 blockchain (MATIC).{" "}
-//                 <span className="text-slate-400 font-light">
-//                   HSKO will have a maximum supply of 1 billion tokens, with a 1%
-//                   txn fee used for development, marketing and charities.
-//                 </span>
-//               </p>
-//             </span>
-//             <span className="w-full max-w-md flex flex-row space-x-4 justify-start">
-//               <Button
-//                 style={"solid"}
-//                 text={"buy now"}
-//                 action={() => {
-//                   console.log("buying");
-//                 }}
-//                 type={"button"}
-//               />
-//               <Button
-//                 style={"outline"}
-//                 text={"learn more"}
-//                 action={() => {
-//                   console.log("learning more");
-//                 }}
-//                 type={"button"}
-//               />
-//             </span>
-//           </span>
-//           {/* Right */}
-//           <span className="">
-//             <img src={"/logo.svg"} alt={"husko hero image"} />
-//           </span>
-//         </span>
-//       </div>
-//     </div>
-//   );
-// };
-
 import Footer from "../Layout/Footer";
 import Header from "../Layout/Header";
+import { connect, disconnect} from "../global/utils/web3";
+import { updateChain } from "../global/features/blockchainSlice";
+// React
+import { useEffect, useState } from 'react'
+
+// Redux
+import { useDispatch, useSelector } from 'react-redux'
 
 const Button = ({ style, text, action, type }) => {
   return (
@@ -70,7 +26,22 @@ const Button = ({ style, text, action, type }) => {
   );
 };
 
+const MintCounter = () => {
+  
+}
+
 const Home = _ => {
+  const account = useSelector((state) => state.blockchain.account)
+  const dispatch = useDispatch()
+  const connectweb3 = () => {
+    if (account) {
+      disconnect().then(
+        (data) => dispatch(updateChain(data))
+      )
+    } else {
+      connect().then((data) => dispatch(updateChain(data)))
+    }
+  }
   return (
     <div className="text-white text-lg ">
       <Header />
@@ -100,14 +71,22 @@ const Home = _ => {
               </span>
             </p>
             <div className="btn-group flex space-x-4 sm:space-x-8 my-6">
-              <Button
+              {account == null ? <Button
                 style={"solid"}
                 text={"Connect Wallet to Continue"}
                 action={() => {
-                  console.log("buying");
+                  connectweb3()
                 }}
                 type={"button"}
-              />
+              /> : <Button
+              style={"solid"}
+              text={"Mint"}
+              action={() => {
+                connectweb3()
+              }}
+              type={"button"}
+            />}
+              
               {/* <Button
                 style={"outline"}
                 text={"learn more"}
