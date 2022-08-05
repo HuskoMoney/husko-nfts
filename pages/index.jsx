@@ -31,6 +31,8 @@ const Button = ({ style, text, action, type }) => {
 
 const Home = _ => {
   const account = useSelector((state) => state.blockchain.account)
+  
+  
   const [mintAmount, setMintAmount] = useState(1)
   const dispatch = useDispatch()
   const incrementAmount = () => {

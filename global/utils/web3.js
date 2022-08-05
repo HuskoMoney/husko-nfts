@@ -3,6 +3,7 @@ import WallectConnectProvider from '@walletconnect/web3-provider'
 import Web3Modal from 'web3modal'
 import Web3 from 'web3'
 import { store } from '../store/store'
+import { useDispatch } from 'react-redux'
 
 const providerOptions = {
     walletconnect: {
@@ -24,11 +25,16 @@ export const connect = async () => {
     cacheProvider: true,
     providerOptions,
 })
+    const provider = await web3Modal.connect()
+    await web3Modal.toggleModal()
+    provider.on("chainChanged", (chainId) => {
+       
+        console.log(chainId)
 
+    })
+    console.log(provider.chainId)
+    if(provider.chainId == 0x13881) {
     try {
-        const provider = await web3Modal.connect()
-        await web3Modal.toggleModal()
-        Web3EthContract.setProvider(provider)
 
         let web3 = new Web3(provider);
         let accounts = await web3.eth.getAccounts()
@@ -44,6 +50,9 @@ export const connect = async () => {
     } catch (err) {
         console.log(err);
     }
+} else {
+    alert('Connect to Mumbai TestNet')
+}
 }
 
 export const disconnect = async () => {
