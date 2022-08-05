@@ -53,8 +53,8 @@ export default function Footer() {
       <div className="copyright text-center pb-6">
         <p className="font-bold text-sm">
           Copyright &copy; {date.getFullYear()}{" "}
-          <span className="text-red-500"> HuskoMonkey </span> - Developed by:
-          <span className="text-red-500">Hyphen</span>
+          <span className="text-red-500"> Husko Money </span>
+          {/* <span className="text-red-500">Hyphen</span> */}
         </p>
       </div>
     </footer>
