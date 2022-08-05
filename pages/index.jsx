@@ -1,6 +1,6 @@
 import Footer from "../Layout/Footer";
 import Header from "../Layout/Header";
-import { connect, disconnect} from "../global/utils/web3";
+import { connect, disconnect, Mint} from "../global/utils/web3";
 import { updateChain } from "../global/features/blockchainSlice";
 // React
 import { useEffect, useState } from 'react'
@@ -26,13 +26,27 @@ const Button = ({ style, text, action, type }) => {
   );
 };
 
-const MintCounter = () => {
-  
-}
+
+
 
 const Home = _ => {
   const account = useSelector((state) => state.blockchain.account)
+  const [mintAmount, setMintAmount] = useState(1)
   const dispatch = useDispatch()
+  const incrementAmount = () => {
+    let newMintAmount = mintAmount + 1;
+    if (newMintAmount >  10) {
+      newMintAmount = 10;
+    }
+    setMintAmount(newMintAmount);
+  }
+  const decrementAmount = () => {
+    let newMintAmount = mintAmount - 1;
+    if(newMintAmount < 1) {
+      newMintAmount = 1;
+    }
+    setMintAmount(newMintAmount);
+  }
   const connectweb3 = () => {
     if (account) {
       disconnect().then(
@@ -70,7 +84,7 @@ const Home = _ => {
                 txn fee used for development, marketing and charities.
               </span>
             </p>
-            <div className="btn-group flex space-x-4 sm:space-x-8 my-6">
+            <div className="btn-group flex justify-center space-x-4 sm:space-x-8 my-6">
               {account == null ? <Button
                 style={"solid"}
                 text={"Connect Wallet to Continue"}
@@ -78,14 +92,33 @@ const Home = _ => {
                   connectweb3()
                 }}
                 type={"button"}
-              /> : <Button
-              style={"solid"}
-              text={"Mint"}
-              action={() => {
-                connectweb3()
-              }}
-              type={"button"}
-            />}
+              /> : <div>
+              <div className="flex justify-center mb-4">
+                <div className="mx-4 ">
+                  <button className="rounded bg-white text-black px-8 py-2" onClick={(e) => {
+                    e.preventDefault();
+                    decrementAmount()
+                  }}>-</button>
+                </div>
+                <div className="mx-4">
+                  <small>{mintAmount}</small>
+                </div>
+                <div className="mx-4">
+                  <button className="rounded bg-white text-black px-8 py-2" onClick={(e) => {
+                    e.preventDefault()
+                    incrementAmount()
+                  }}>+</button>
+                </div>
+                
+              </div>
+              <div className="flex justify-center ">
+              <button className="rounded bg-white text-black px-8 py-4" onClick={(e) => {
+                e.preventDefault()
+                Mint(mintAmount);
+              }}>Mint</button>
+              </div>
+              
+              </div>}
               
               {/* <Button
                 style={"outline"}

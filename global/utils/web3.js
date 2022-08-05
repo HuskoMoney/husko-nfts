@@ -2,15 +2,16 @@ import Web3EthContract from 'web3-eth-contract'
 import WallectConnectProvider from '@walletconnect/web3-provider'
 import Web3Modal from 'web3modal'
 import Web3 from 'web3'
+import { store } from '../store/store'
 
 const providerOptions = {
     walletconnect: {
         package: WallectConnectProvider,
         options: {
             rpc: {
-                56: 'https://bsc-dataseed1.binance.org'
+                8001: 'https://rpc-endpoints.superfluid.dev/mumbai'
             },
-            chainId: 56,
+            chainId: 8001,
         }
     }
 }
@@ -55,6 +56,19 @@ export const disconnect = async () => {
     return null;
 }
 
-export const Mint = async () => {
+export const Mint = async (mintAmount) => {
+    const tokenAbi = await fetch('config/abi.json')
+    const abiJson = await tokenAbi.json()
+    Web3EthContract.setProvider(store.getState().blockchain.provider)
 
+    const contract = new Web3EthContract(abiJson, '0xB471991BF9482D9db75b0139382944b7D0A96633');
+
+    try {
+        await contract.methods.mint(mintAmount).send({
+            from: store.getState().blockchain.account,
+            value: (mintAmount * 2) * 10**18
+        })
+    } catch (err) {
+        console.log(err)
+    }
 }
