@@ -88,9 +88,8 @@ const Home = _ => {
           {/* Content - desk:left  */}
           <div className="hero__content md:flex-auto md:w-3/5 xl:w-1/2">
             <h1 className="text-4xl sm:text-6xl">
-              HSKO donates{" "}
-              <span className="text-red-600">0.5% of every transaction</span> to
-              charity
+              HSKO NFT{" "}
+              <span className="text-red-600">500 Unique art on blockchain</span> Mint Now
             </h1>
             <p className="font-bold py-6">
               HSKO is a p2p community-driven, cryptocurrency on the Polygon
@@ -103,20 +102,20 @@ const Home = _ => {
             <div className="btn-group flex space-x-4 sm:space-x-8 my-6">
               <Button
                 style={"solid"}
-                text={"buy now"}
+                text={"Connect Wallet to Continue"}
                 action={() => {
                   console.log("buying");
                 }}
                 type={"button"}
               />
-              <Button
+              {/* <Button
                 style={"outline"}
                 text={"learn more"}
                 action={() => {
                   console.log("learning more");
                 }}
                 type={"button"}
-              />
+              /> */}
             </div>
           </div>
         </div>

@@ -1,3 +1,4 @@
+import Head from "next/head";
 import React, { useRef } from "react";
 
 export default function Header() {
@@ -13,6 +14,10 @@ export default function Header() {
 
   return (
     <header className="bg-slate-500">
+      <Head>
+        <title>Mint- HUSKO NFT</title>
+        <link rel="icon" href="/favicon.svg"/>
+      </Head>
       <nav className="header__nav  flex justify-end sm:justify-center">
         <div
           onClick={toggleMenu}
