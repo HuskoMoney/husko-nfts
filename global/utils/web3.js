@@ -3,7 +3,6 @@ import WallectConnectProvider from '@walletconnect/web3-provider'
 import Web3Modal from 'web3modal'
 import Web3 from 'web3'
 import { store } from '../store/store'
-import { useDispatch } from 'react-redux'
 
 const providerOptions = {
     walletconnect: {
@@ -28,7 +27,12 @@ export const connect = async () => {
     const provider = await web3Modal.connect()
     await web3Modal.toggleModal()
     provider.on("chainChanged", (chainId) => {
-       
+        if(chainId == 0x89) {
+            return;
+        } else {
+            location.reload()
+        }
+       // location.reload()
         console.log(chainId)
 
     })
@@ -71,11 +75,14 @@ export const Mint = async (mintAmount) => {
     Web3EthContract.setProvider(store.getState().blockchain.provider)
 
     const contract = new Web3EthContract(abiJson, '0xeBFbc2fe3dC42e2a2d9a8E1E08AFd79b9F515ecF');
+    const price = await contract.methods.cost().call();
+    
+
 
     try {
         await contract.methods.mint(mintAmount).send({
             from: store.getState().blockchain.account,
-            value: (mintAmount * 1) * 10**18
+            value: mintAmount * price
         })
     } catch (err) {
         console.log(err)
