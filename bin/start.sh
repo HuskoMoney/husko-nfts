@@ -3,7 +3,7 @@
 #cd "$(dirname "$0")/.."
 . $HOME/.bashrc
 . "$NVM_DIR/nvm.sh" && nvm use v16
-. .env
+. .env.defaults
 . .env.local
 
 
