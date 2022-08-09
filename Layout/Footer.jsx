@@ -24,17 +24,17 @@ export default function Footer() {
           <h6 className="uppercase">follow us</h6>
           <ul className="social__media flex justify-center lg:justify-start  space-x-8 mt-6">
             <li>
-              <a href="http://#">
+              <a href="https://twitter.com/HuskoMoney">
                 <img src="/icons/svg/twitter.svg" className="w-5" alt="" />
               </a>
             </li>
             <li>
-              <a href="http://#">
+              <a href="https://github.com/HuskoMoney">
                 <img src="/icons/svg/github.svg" className="w-5" alt="" />
               </a>
             </li>
             <li>
-              <a href="http://#">
+              <a href="https://t.me/HuskoMoney">
                 <img
                   src="/icons/svg/git.svg"
                   className="w-5"
@@ -43,7 +43,7 @@ export default function Footer() {
               </a>
             </li>
             <li>
-              <a href="http://#">
+              <a href="mailto:hello@husko.money">
                 <img src="/icons/svg/mail.svg" className="w-5" alt="" />
               </a>
             </li>

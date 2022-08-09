@@ -10,9 +10,9 @@ const providerOptions = {
         package: WallectConnectProvider,
         options: {
             rpc: {
-                8001: 'https://rpc-endpoints.superfluid.dev/mumbai'
+                137: 'https://polygon-rpc.com'
             },
-            chainId: 8001,
+            chainId: 137,
         }
     }
 }
@@ -33,7 +33,7 @@ export const connect = async () => {
 
     })
     console.log(provider.chainId)
-    if(provider.chainId == 0x13881) {
+    if(provider.chainId == 0x89) {
     try {
 
         let web3 = new Web3(provider);
@@ -51,7 +51,7 @@ export const connect = async () => {
         console.log(err);
     }
 } else {
-    alert('Connect to Mumbai TestNet')
+    alert('Connect to Polygon Network')
 }
 }
 
@@ -70,12 +70,12 @@ export const Mint = async (mintAmount) => {
     const abiJson = await tokenAbi.json()
     Web3EthContract.setProvider(store.getState().blockchain.provider)
 
-    const contract = new Web3EthContract(abiJson, '0xB471991BF9482D9db75b0139382944b7D0A96633');
+    const contract = new Web3EthContract(abiJson, '0xeBFbc2fe3dC42e2a2d9a8E1E08AFd79b9F515ecF');
 
     try {
         await contract.methods.mint(mintAmount).send({
             from: store.getState().blockchain.account,
-            value: (mintAmount * 2) * 10**18
+            value: (mintAmount * 1) * 10**18
         })
     } catch (err) {
         console.log(err)

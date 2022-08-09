@@ -50,16 +50,22 @@ export default function Header() {
             </a>
           </li>
           <li>
-            <a href="http://#"> About</a>
+            <a href="http://husko.money/#about"> About</a>
           </li>
           <li>
-            <a href="http://#"> News</a>
+            <a href="http://husko.money/#news"> News</a>
           </li>
           <li>
-            <a href="http://#"> Exchanges</a>
+            <a href="http://husko.money/#exchanges"> Exchanges</a>
           </li>
           <li>
-            <a href="http://#"> Dapps</a>
+            <a href="http://husko.money/#dapps"> Dapps</a>
+          </li>
+          <li>
+            <a href="http://husko.money/blog"> Blog</a>
+          </li>
+          <li>
+            <a href="http://husko.money/#newsletter">Newsletter</a>
           </li>
         </ul>
       </nav>
