@@ -1283,7 +1283,7 @@ contract HUSKONFT is ERC721Enumerable, Ownable, ERC165Storage {
     using Strings for uint256;
     string public baseURI;
     string public baseExtension = ".json";
-    uint256 public cost = 2 ether;
+    uint256 public cost = 100 ether;
     uint256 public maxSupply = 500;
     uint256 public maxMintAmount = 3;
     bool public paused = false;
