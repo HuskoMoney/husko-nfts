@@ -1,0 +1,17 @@
+[Unit]
+Description=Husko NFTs
+After=network.target
+StartLimitIntervalSec=0
+
+[Service]
+Type=simple
+Restart=always
+RestartSec=1
+User=ubuntu
+WorkingDirectory=/home/ubuntu/www/husko.money/husko-nfts
+ExecStart=/home/ubuntu/www/husko.money/husko-nfts/bin/start.sh
+StandardOutput=append:/var/log/husko-nfts.log
+StandardError=append:/var/log/husko-nfts.error.log
+
+[Install]
+WantedBy=multi-user.target
