@@ -1289,11 +1289,11 @@ contract HUSKONFT is ERC721Enumerable, Ownable, ERC165Storage {
     bool public paused = false;
     bytes4 private constant _INTERFACE_ID_ERC2981 = 0x2a55205a;
   
-    constructor() ERC721("HUSKO NFT ", "HSKON"){
+    constructor() ERC721("HUSKO NFT", "HSKON"){
         setBaseURI("ipfs://Qme2hgUkAqWpZEs12WHgJY4iGXPtu5Gxxu4tnP7LTAJJ8j/");
         royaltyWallet = msg.sender;
         _setRoyaltyWallet(royaltyWallet);
-        royaltyFee = 1000;
+        royaltyFee = 500;
         _registerInterface(_INTERFACE_ID_ERC2981);
     }
     function supportsInterface(bytes4 interfaceId) public view virtual override(ERC721Enumerable,  ERC165Storage) returns (bool) {
